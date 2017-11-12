@@ -9,7 +9,7 @@ def preProcessing(paragraph):
     letters_regexed = [] # Store all regexed letters
     letters_splited = [] # Store all splited letters
     stopword = [line.rstrip('\n\r') for line in open('stopwords_en.txt')]
-    filteredWords    = [] # Store all filtered words according to stopwords_en.txt
+    filtered_Words    = [] # Store all filtered words according to stopwords_en.txt
     wordLemma = WordNetLemmatizer()
     stemmer = PorterStemmer()
     words_lemmatized = []
@@ -25,12 +25,11 @@ def preProcessing(paragraph):
     for j in range(len(letters_splited)):
         for k in range(len(letters_splited[j])):
             if letters_splited[j][k] not in stopword:
-                filteredWords.append(letters_splited[j][k])
+                filtered_Words.append(letters_splited[j][k])
 
-    for l in range(len(filteredWords)):
-        words_stemmed = stemmer.stem(filteredWords[l])
+    for l in range(len(filtered_Words)):
+        words_stemmed = stemmer.stem(filtered_Words[l])
         words_lemmatized.append(wordLemma.lemmatize(words_stemmed))
 
     return words_lemmatized
-
 
